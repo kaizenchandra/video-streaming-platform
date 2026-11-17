@@ -1,0 +1,121 @@
+{
+  "project": "stream-large-43a704ce",
+  "frames": 486,
+  "scope": "10GiB qualification",
+  "checks": {
+    "injections_restored_sha256": "PASS",
+    "large_reservation_and_idempotency": "PASS",
+    "concurrent_completion_and_quota": "PASS",
+    "full_byte_coverage_matching_hash_and_no_autoapproval": "PASS",
+    "manual_review_and_owner_role_enforcement": "PASS",
+    "scratch_receipt": "PASS",
+    "deletion_revocation": "PASS"
+  },
+  "source": {
+    "bytes": 10749547065,
+    "metadata": {
+      "codec_name": "v210",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "24/1",
+      "duration": "20.250000",
+      "nb_frames": "486"
+    },
+    "padding": "none; real uncompressed video samples",
+    "sha256": "9ee1b7ef9277fcee3658d28d3280afb0b99eb5feb3b4cb6641a17bfca57227bc"
+  },
+  "liveDetectionQualification": {
+    "bytes": 10749547065,
+    "canarySignature": "Streamworks.Coverage.Canary (qualification-only any-offset NDB rule; not native EICAR)",
+    "startedAt": "2026-11-14T19:04:54.784494207Z",
+    "engine": {
+      "version": "ClamAV 1.4.6",
+      "database": 28183,
+      "builtAt": 1794637457.0
+    },
+    "detections": {
+      "window_boundary": {
+        "result": "INFECTED",
+        "offset": 67108829,
+        "coverage": {
+          "policy": "clamav-windowed-mp4-v1",
+          "sourceBytes": 10749547065,
+          "coveredBytes": 67108864,
+          "transmittedBytes": 134222357,
+          "windows": 1,
+          "windowBytes": 67108864,
+          "overlapBytes": 65536,
+          "sha256": null,
+          "complete": false
+        }
+      },
+      "beyond_2GiB": {
+        "result": "INFECTED",
+        "offset": 3221237817,
+        "coverage": {
+          "policy": "clamav-windowed-mp4-v1",
+          "sourceBytes": 10749547065,
+          "coveredBytes": 3218145280,
+          "transmittedBytes": 3288338965,
+          "windows": 48,
+          "windowBytes": 67108864,
+          "overlapBytes": 65536,
+          "sha256": null,
+          "complete": false
+        }
+      },
+      "media_tail": {
+        "result": "INFECTED",
+        "offset": 10749542350,
+        "coverage": {
+          "policy": "clamav-windowed-mp4-v1",
+          "sourceBytes": 10749547065,
+          "coveredBytes": 10726998016,
+          "transmittedBytes": 10760037454,
+          "windows": 160,
+          "windowBytes": 67108864,
+          "overlapBytes": 65536,
+          "sha256": null,
+          "complete": false
+        }
+      }
+    },
+    "elapsedSeconds": 154.345380396,
+    "result": "PASS"
+  },
+  "coverageCanaryRuleSha256": "6bbf18bc479bcece0216381390d41759c7152b5b0ad1d12025eac0a0a7add0cb",
+  "upload": {
+    "parts": 1282,
+    "seconds": 38.63221141700342,
+    "sourceBytes": 10749547065,
+    "clientChunkBytes": 8388608,
+    "resumedAtPart": 4,
+    "lostAckReplay": "same ETag"
+  },
+  "processingSeconds": 231.396349542003,
+  "coverage": {
+    "policy": "clamav-windowed-mp4-v1",
+    "sha256": "9ee1b7ef9277fcee3658d28d3280afb0b99eb5feb3b4cb6641a17bfca57227bc",
+    "windows": 161,
+    "complete": true,
+    "sourceBytes": 10749547065,
+    "windowBytes": 67108864,
+    "coveredBytes": 10749547065,
+    "overlapBytes": 65536,
+    "transmittedBytes": 10760037454
+  },
+  "playback": {
+    "variants": [
+      "240p/index.m3u8",
+      "360p/index.m3u8",
+      "480p/index.m3u8",
+      "720p/index.m3u8",
+      "1080p/index.m3u8"
+    ],
+    "segmentsFetched": 30,
+    "anonymousDenied": true
+  },
+  "pythonPeakRssBytes": 34766848,
+  "elapsedSeconds": 450.3572380000114,
+  "result": "PASS"
+}

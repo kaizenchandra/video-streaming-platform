@@ -1,0 +1,23 @@
+name: streaming-scanner-qualification
+services:
+  clamav:
+    image: streaming-clamav:coverage-qualified
+    platform: linux/amd64
+    mem_limit: 4g
+    cpus: 2
+    healthcheck:
+      test: [ CMD, clamdscan, '--ping=1' ]
+      interval: 3s
+      timeout: 5s
+      retries: 80
+  qualify:
+    image: streaming-worker:verify
+    mem_limit: 512m
+    cpus: 2
+    entrypoint: [ java, '-Dloader.main=com.example.streaming.processing.ScannerQualification', '-cp', /app.jar, org.springframework.boot.loader.launch.PropertiesLauncher ]
+    environment:
+      CLAMAV_HOST: clamav
+      CLAMAV_EXPECT_DATABASE: ${CLAMAV_EXPECT_DATABASE:-0}
+    depends_on:
+      clamav:
+        condition: service_healthy

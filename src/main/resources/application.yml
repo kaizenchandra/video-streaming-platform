@@ -1,0 +1,59 @@
+server:
+  port: 8080
+  shutdown: graceful
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5544/streaming}
+    username: ${DB_USER:streaming}
+    password: ${DB_PASSWORD:local-development-only}
+    hikari:
+      maximum-pool-size: 12
+      connection-timeout: 3000
+  threads.virtual.enabled: true
+  mvc.problemdetails.enabled: true
+  jackson.deserialization.fail-on-unknown-properties: true
+management:
+  endpoints.web.exposure.include: health,prometheus
+  endpoint.health.probes.enabled: true
+media:
+  endpoint: ${S3_ENDPOINT:http://localhost:9100}
+  public-endpoint: ${S3_PUBLIC_ENDPOINT:http://localhost:9100}
+  bucket: ${S3_BUCKET:media}
+  access-key: ${S3_ACCESS_KEY:localstream}
+  secret-key: ${S3_SECRET_KEY:localstream-development-only}
+  worker: ${WORKER_ENABLED:false}
+  ffmpeg: /usr/bin/ffmpeg
+  ffprobe: /usr/bin/ffprobe
+  temp: ${MEDIA_TEMP:/tmp/streaming}
+  auth-secret: ${AUTH_SECRET:local-development-secret-at-least-32-bytes-long}
+  dev-auth: ${DEV_AUTH:false}
+  issuer: ${OIDC_ISSUER:}
+  credentials-mode: ${S3_CREDENTIALS_MODE:static}
+  region: ${AWS_REGION:us-east-1}
+  path-style: ${S3_PATH_STYLE:true}
+  moderation.auto-approve: ${MODERATION_AUTO_APPROVE:false}
+  scan:
+    mode: ${MEDIA_SCAN_MODE:clamav}
+    host: ${CLAMAV_HOST:clamav}
+    port: ${CLAMAV_PORT:3310}
+    max-bytes: ${MEDIA_SCAN_MAX_BYTES:104857600}
+    window-bytes: ${MEDIA_SCAN_WINDOW_BYTES:67108864}
+    overlap-bytes: ${MEDIA_SCAN_OVERLAP_BYTES:65536}
+    source-timeout-ms: ${MEDIA_SCAN_SOURCE_TIMEOUT_MS:3600000}
+    timeout-ms: ${MEDIA_SCAN_TIMEOUT_MS:600000}
+    max-signature-age-seconds: ${MEDIA_SCAN_MAX_SIGNATURE_AGE_SECONDS:604800}
+  erasure:
+    enabled: ${ERASURE_ENABLED:false}
+    grace-seconds: ${ERASURE_GRACE_SECONDS:86400}
+  cdn:
+    origin: ${CDN_ORIGIN:}
+    key-id: ${CDN_KEY_ID:}
+    private-key-file: ${CDN_PRIVATE_KEY_FILE:}
+    ttl-seconds: ${CDN_TTL_SECONDS:300}
+  scratch-min-free-bytes: ${MEDIA_SCRATCH_MIN_FREE_BYTES:53687091200}
+  scratch:
+    enabled: ${SCRATCH_CLEANUP_ENABLED:true}
+    retention-seconds: ${SCRATCH_RETENTION_SECONDS:86400}
+    interval-ms: ${SCRATCH_CLEANUP_INTERVAL_MS:60000}
+    adopt-legacy: ${SCRATCH_ADOPT_LEGACY:false}
+  ffmpeg-timeout-seconds: ${MEDIA_FFMPEG_TIMEOUT_SECONDS:18000}

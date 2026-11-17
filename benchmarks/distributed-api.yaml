@@ -1,0 +1,30 @@
+# Run only on a dedicated load-test cluster after setting a traffic/cost ceiling.
+# Ten independent k6 processes at 10k requested RPS = 100k requested RPS; achieved rate must be measured.
+apiVersion: batch/v1
+kind: Job
+metadata: { name: streaming-metadata-load }
+spec:
+  parallelism: 10
+  completions: 10
+  completionMode: Indexed
+  backoffLimit: 0
+  activeDeadlineSeconds: 180
+  template:
+    spec:
+      restartPolicy: Never
+      automountServiceAccountToken: false
+      containers:
+        - name: k6
+          image: grafana/k6:0.55.0
+          args: [ run, /work/metadata.js ]
+          env:
+            - { name: BASE, value: "https://REPLACE_WITH_STAGING_DOMAIN" }
+            - { name: RATE, value: "10000" }
+            - { name: MAX_VUS, value: "5000" }
+            - { name: DURATION, value: "60s" }
+            - { name: TOKEN, valueFrom: { secretKeyRef: { name: staging-load-token, key: token } } }
+          resources:
+            requests: { cpu: "4", memory: 2Gi }
+            limits: { cpu: "8", memory: 4Gi }
+          volumeMounts: [ { name: scripts, mountPath: /work, readOnly: true } ]
+      volumes: [ { name: scripts, configMap: { name: streaming-k6 } } ]

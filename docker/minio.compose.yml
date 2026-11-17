@@ -1,0 +1,52 @@
+# New isolated durable local fixture; do not replace an existing LocalStack volume in place.
+services:
+  storage:
+    image: streaming-minio:local
+    build:
+      context: .
+      dockerfile: docker/minio.Dockerfile
+    command: [ server, /data, --address, ':4566', --console-address, ':9001' ]
+    environment:
+      MINIO_ROOT_USER: localstream
+      MINIO_ROOT_PASSWORD: localstream-development-only
+      MINIO_API_CORS_ALLOW_ORIGIN: http://localhost:8091
+    volumes: !override [ "minio-data:/data" ]
+    ports: !override [ "127.0.0.1:9101:4566" ]
+    healthcheck:
+      test: [ CMD, curl, -fsS, http://localhost:4566/minio/health/ready ]
+      interval: 3s
+      retries: 30
+  storage-init:
+    image: streaming-api
+    build:
+      context: .
+      target: api
+    entrypoint: [ java, '-Dloader.main=com.example.streaming.upload.StorageBootstrap', '-cp', /app/app.jar, org.springframework.boot.loader.launch.PropertiesLauncher ]
+    environment:
+      S3_ENDPOINT: http://storage:4566
+    depends_on:
+      storage:
+        condition: service_healthy
+  api:
+    image: streaming-api
+    environment:
+      S3_PUBLIC_ENDPOINT: http://localhost:9101
+      MODERATION_AUTO_APPROVE: "false"
+    ports: !override [ "127.0.0.1:8182:8080" ]
+    depends_on:
+      storage-init:
+        condition: service_completed_successfully
+  worker:
+    image: streaming-worker
+    environment:
+      S3_PUBLIC_ENDPOINT: http://localhost:9101
+      MODERATION_AUTO_APPROVE: "false"
+    depends_on:
+      storage-init:
+        condition: service_completed_successfully
+  web:
+    ports: !override [ "127.0.0.1:8091:80" ]
+  postgres:
+    ports: !override [ "127.0.0.1:5545:5432" ]
+volumes:
+  minio-data:

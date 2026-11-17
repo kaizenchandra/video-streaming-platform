@@ -1,0 +1,27 @@
+# Disposable qualification override. Use with compose.yml and docker/minio.compose.yml.
+services:
+  api:
+    image: streaming-api:large-qual
+    ports: !override [ "127.0.0.1::8080" ]
+    environment:
+      S3_PUBLIC_ENDPOINT: ${LARGE_S3_URL:-http://localhost:1}
+      MEDIA_SCAN_MODE: clamav-windowed-mp4
+      MODERATION_AUTO_APPROVE: "false"
+  worker:
+    image: streaming-worker:large-qual
+    environment:
+      S3_PUBLIC_ENDPOINT: ${LARGE_S3_URL:-http://localhost:1}
+      MEDIA_SCAN_MODE: clamav-windowed-mp4
+      CLAMAV_HOST: clamav
+      MODERATION_AUTO_APPROVE: "true" # Deliberate test: windowed verdict MUST still require manual approval.
+    networks: [ default, scanner ]
+  storage:
+    ports: !override [ "127.0.0.1::4566" ]
+  postgres:
+    ports: !override [ "127.0.0.1::5432" ]
+  web:
+    ports: !override [ "127.0.0.1::80" ]
+networks:
+  scanner:
+    external: true
+    name: streaming-scanner-qualification_default

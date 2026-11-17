@@ -1,0 +1,28 @@
+# docker compose -f compose.yml -f docker/moderated.compose.yml up --build -d
+# ClamAV needs signature download time/network and sufficient memory before processing.
+services:
+  api:
+    environment:
+      MODERATION_AUTO_APPROVE: "false"
+      MEDIA_SCAN_MODE: clamav
+  worker:
+    environment:
+      MODERATION_AUTO_APPROVE: "false"
+      MEDIA_SCAN_MODE: clamav
+      CLAMAV_HOST: clamav
+  clamav:
+    image: streaming-clamav:qualified
+    build:
+      context: .
+      dockerfile: docker/clamav/Dockerfile
+    platform: linux/amd64
+    volumes: [ "clamav-signatures:/var/lib/clamav" ]
+    healthcheck:
+      test: [ CMD, clamdscan, '--ping=1' ]
+      interval: 5s
+      timeout: 5s
+      retries: 60
+    mem_limit: 4g
+    cpus: 2
+volumes:
+  clamav-signatures:

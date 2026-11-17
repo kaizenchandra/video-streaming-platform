@@ -1,0 +1,11 @@
+target/
+.env
+*.log
+__pycache__/
+node_modules/
+upload-state.json
+.terraform/
+*.tfstate*
+*.tfplan
+*.tfvars
+*.pem

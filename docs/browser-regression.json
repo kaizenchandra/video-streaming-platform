@@ -1,0 +1,14 @@
+{
+  "result": "PASS",
+  "decoded": {
+    "time": 2.026316,
+    "width": 427,
+    "height": 240
+  },
+  "seek": true,
+  "qualities": [
+    "Auto quality",
+    "528 kbps",
+    "928 kbps"
+  ]
+}

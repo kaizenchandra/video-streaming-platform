@@ -1,0 +1,1715 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Streamworks control plane",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8090"
+    }
+  ],
+  "security": [
+    {
+      "bearer": []
+    }
+  ],
+  "paths": {
+    "/api/v1/videos": {
+      "get": {
+        "summary": "GET /videos",
+        "operationId": "get_videos",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creator",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxDuration",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "POST /videos",
+        "operationId": "post_videos",
+        "responses": {
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          },
+          "201": {
+            "description": "Successful response"
+          }
+        },
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Metadata"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/videos/{id}": {
+      "get": {
+        "summary": "GET /videos/{id}",
+        "operationId": "get_videos_id",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      },
+      "patch": {
+        "summary": "PATCH /videos/{id}",
+        "operationId": "patch_videos_id",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Metadata"
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "DELETE /videos/{id}",
+        "operationId": "delete_videos_id",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/uploads": {
+      "post": {
+        "summary": "POST /videos/uploads",
+        "operationId": "post_videos_uploads",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          },
+          "413": {
+            "description": "Exceeds active ingestion policy: ordinary ClamAV default100MiB; explicit limited windowed MP4/MOV mode20GiB. Content validation follows upload completion."
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UploadStart"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/videos/uploads/{id}": {
+      "get": {
+        "summary": "GET /videos/uploads/{id}",
+        "operationId": "get_videos_uploads_id",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/uploads/{id}/parts": {
+      "post": {
+        "summary": "POST /videos/uploads/{id}/parts",
+        "operationId": "post_videos_uploads_id_parts",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Parts"
+              }
+            }
+          }
+        },
+        "description": "Fixed 8 MiB parts except final; URL signs Content-Length and part number cannot exceed reserved byte count. Response contains number, contentLength and url."
+      }
+    },
+    "/api/v1/videos/uploads/{id}/complete": {
+      "post": {
+        "summary": "POST /videos/uploads/{id}/complete",
+        "operationId": "post_videos_uploads_id_complete",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/uploads/{id}/abort": {
+      "post": {
+        "summary": "POST /videos/uploads/{id}/abort",
+        "operationId": "post_videos_uploads_id_abort",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/{id}/processing-status": {
+      "get": {
+        "summary": "GET /videos/{id}/processing-status",
+        "operationId": "get_videos_id_processing-status",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/{id}/reprocess": {
+      "post": {
+        "summary": "POST /videos/{id}/reprocess",
+        "operationId": "post_videos_id_reprocess",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/{id}/playback-sessions": {
+      "post": {
+        "summary": "POST /videos/{id}/playback-sessions",
+        "operationId": "post_videos_id_playback-sessions",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/{id}/playback": {
+      "get": {
+        "summary": "GET /videos/{id}/playback",
+        "operationId": "get_videos_id_playback",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/{id}/watch-progress": {
+      "put": {
+        "summary": "PUT /videos/{id}/watch-progress",
+        "operationId": "put_videos_id_watch-progress",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Progress"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/me/continue-watching": {
+      "get": {
+        "summary": "GET /users/me/continue-watching",
+        "operationId": "get_users_me_continue-watching",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/api/v1/users/me/videos": {
+      "get": {
+        "summary": "GET /users/me/videos",
+        "operationId": "get_users_me_videos",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/api/v1/search/videos": {
+      "get": {
+        "summary": "GET /search/videos",
+        "operationId": "get_search_videos",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creator",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxDuration",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/trending": {
+      "get": {
+        "summary": "GET /videos/trending",
+        "operationId": "get_videos_trending",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "creator",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maxDuration",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/recommendations": {
+      "get": {
+        "summary": "GET /videos/recommendations",
+        "operationId": "get_videos_recommendations",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/api/v1/videos/{id}/likes/me": {
+      "put": {
+        "summary": "PUT /videos/{id}/likes/me",
+        "operationId": "put_videos_id_likes_me",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "summary": "DELETE /videos/{id}/likes/me",
+        "operationId": "delete_videos_id_likes_me",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/{id}/comments": {
+      "get": {
+        "summary": "GET /videos/{id}/comments",
+        "operationId": "get_videos_id_comments",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "POST /videos/{id}/comments",
+        "operationId": "post_videos_id_comments",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Comment"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/videos/{id}/comments/{comment}": {
+      "delete": {
+        "summary": "DELETE /videos/{id}/comments/{comment}",
+        "operationId": "delete_videos_id_comments_comment",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "comment",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/videos/{id}/watchlist/me": {
+      "put": {
+        "summary": "PUT /videos/{id}/watchlist/me",
+        "operationId": "put_videos_id_watchlist_me",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Validation problem"
+          },
+          "401": {
+            "description": "Bearer authentication required"
+          },
+          "404": {
+            "description": "Missing or hidden resource"
+          },
+          "409": {
+            "description": "Stale version, duplicate active work, or invalid transition"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/users/me": {
+      "get": {
+        "summary": "GET /users/me",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "JWT required"
+          },
+          "403": {
+            "description": "Owner or trusted moderator role required"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Stale version, duplicate handle, or invalid state"
+          }
+        }
+      },
+      "patch": {
+        "summary": "PATCH /users/me",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "JWT required"
+          },
+          "403": {
+            "description": "Owner or trusted moderator role required"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Stale version, duplicate handle, or invalid state"
+          }
+        },
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Current version; -1 creates a new channel"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Profile"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/users/me/deactivate": {
+      "post": {
+        "summary": "POST /users/me/deactivate",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "JWT required"
+          },
+          "403": {
+            "description": "Owner or trusted moderator role required"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Stale version, duplicate handle, or invalid state"
+          }
+        }
+      }
+    },
+    "/api/v1/users/me/channel": {
+      "put": {
+        "summary": "PUT /users/me/channel",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "JWT required"
+          },
+          "403": {
+            "description": "Owner or trusted moderator role required"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Stale version, duplicate handle, or invalid state"
+          }
+        },
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Current version; -1 creates a new channel"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Channel"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/channels/{handle}": {
+      "get": {
+        "summary": "GET /channels/{handle}",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "JWT required"
+          },
+          "403": {
+            "description": "Owner or trusted moderator role required"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Stale version, duplicate handle, or invalid state"
+          }
+        },
+        "parameters": [
+          {
+            "name": "handle",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/channels/{handle}/videos": {
+      "get": {
+        "summary": "GET /channels/{handle}/videos",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "JWT required"
+          },
+          "403": {
+            "description": "Owner or trusted moderator role required"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Stale version, duplicate handle, or invalid state"
+          }
+        },
+        "parameters": [
+          {
+            "name": "handle",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v1/moderation/videos": {
+      "get": {
+        "summary": "GET /moderation/videos",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "JWT required"
+          },
+          "403": {
+            "description": "Owner or trusted moderator role required"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Stale version, duplicate handle, or invalid state"
+          }
+        },
+        "description": "Trusted moderator only. Includes scan_result, scan_policy, scanned_bytes, source_bytes and engine/database for informed manual review. WINDOWED_MP4_V1 is limited byte-window submission, not whole-file CLEAN."
+      }
+    },
+    "/api/v1/videos/{id}/moderation-decisions": {
+      "post": {
+        "summary": "POST /videos/{id}/moderation-decisions",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "JWT required"
+          },
+          "403": {
+            "description": "Owner or trusted moderator role required"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Stale version, duplicate handle, or invalid state"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Current version; -1 creates a new channel"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ModerationDecision"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/videos/{id}/legal-hold": {
+      "put": {
+        "summary": "PUT /videos/{id}/legal-hold",
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "JWT required"
+          },
+          "403": {
+            "description": "Owner or trusted moderator role required"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Stale version, duplicate handle, or invalid state"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LegalHold"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/videos/{id}/erasure-status": {
+      "get": {
+        "summary": "GET /videos/{id}/erasure-status",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "state": {
+                      "type": "string",
+                      "enum": [
+                        "PENDING",
+                        "DONE"
+                      ]
+                    },
+                    "not_before": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "attempts": {
+                      "type": "integer"
+                    },
+                    "last_error": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "completed_at": {
+                      "type": "string",
+                      "format": "date-time",
+                      "nullable": true
+                    },
+                    "legalHold": {
+                      "type": "boolean"
+                    },
+                    "scratchPending": {
+                      "type": "integer",
+                      "format": "int64",
+                      "minimum": 0,
+                      "description": "Tracked attempts without a local purge receipt; includes active/held attempts."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Validation error"
+          },
+          "401": {
+            "description": "JWT required"
+          },
+          "403": {
+            "description": "Owner or trusted moderator role required"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "409": {
+            "description": "Stale version, duplicate handle, or invalid state"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "description": "Owner-readable primary-bucket erasure status after deletion. scratchPending counts tracked local attempts only; DONE does not imply scratch, backups, replicas, CDN or physical disk sanitization."
+      }
+    },
+    "/api/v1/videos/{id}/review-playback-sessions": {
+      "post": {
+        "summary": "Mint audited fifteen-minute moderator preview; excluded from history/views",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped preview credentials"
+          },
+          "403": {
+            "description": "MODERATOR role required"
+          },
+          "404": {
+            "description": "Video missing"
+          },
+          "409": {
+            "description": "Verified media/scan unavailable"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Metadata": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 5000
+          },
+          "category": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "string"
+          },
+          "visibility": {
+            "type": "string",
+            "enum": [
+              "PUBLIC",
+              "UNLISTED",
+              "PRIVATE"
+            ]
+          },
+          "published": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title",
+          "category",
+          "visibility"
+        ],
+        "additionalProperties": false
+      },
+      "UploadStart": {
+        "type": "object",
+        "properties": {
+          "videoId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 21474836480
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "videoId",
+          "bytes",
+          "sha256"
+        ],
+        "additionalProperties": false
+      },
+      "Parts": {
+        "type": "object",
+        "properties": {
+          "first": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000
+          },
+          "count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "required": [
+          "first",
+          "count"
+        ],
+        "additionalProperties": false
+      },
+      "Progress": {
+        "type": "object",
+        "properties": {
+          "sessionId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "sequence": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "position": {
+            "type": "number",
+            "minimum": 0
+          },
+          "completed": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "sessionId",
+          "sequence",
+          "position"
+        ],
+        "additionalProperties": false
+      },
+      "Comment": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "body"
+        ],
+        "additionalProperties": false
+      },
+      "Preferences": {
+        "type": "object",
+        "properties": {
+          "language": {
+            "type": "string",
+            "pattern": "^[a-z]{2}(-[A-Z]{2})?$"
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "dark",
+              "light",
+              "system"
+            ]
+          },
+          "autoplay": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "language",
+          "theme"
+        ],
+        "additionalProperties": false
+      },
+      "Profile": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "preferences": {
+            "$ref": "#/components/schemas/Preferences"
+          }
+        },
+        "required": [
+          "displayName",
+          "preferences"
+        ],
+        "additionalProperties": false
+      },
+      "Channel": {
+        "type": "object",
+        "properties": {
+          "handle": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_-]{2,39}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "handle",
+          "name",
+          "description"
+        ],
+        "additionalProperties": false
+      },
+      "ModerationDecision": {
+        "type": "object",
+        "properties": {
+          "attempt": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "decision": {
+            "type": "string",
+            "enum": [
+              "APPROVED",
+              "REJECTED"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "attempt",
+          "decision",
+          "reason"
+        ],
+        "additionalProperties": false
+      },
+      "LegalHold": {
+        "type": "object",
+        "properties": {
+          "held": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "held"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

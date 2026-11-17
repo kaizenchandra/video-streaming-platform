@@ -1,0 +1,14 @@
+{
+  "streaming": {
+    "schema": 9,
+    "readiness": "UP",
+    "volumes": "preserved",
+    "scanMode": "disabled; existing synthetic development setting preserved"
+  },
+  "streaming-durable": {
+    "schema": 9,
+    "readiness": "UP",
+    "volumes": "preserved",
+    "scanMode": "disabled; existing synthetic development setting preserved"
+  }
+}

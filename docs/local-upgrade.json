@@ -1,0 +1,22 @@
+{
+  "streaming": {
+    "migration": "8",
+    "legacyMaintenance": {
+      "purged": 0,
+      "volume": "061c5f64-bae6-4b09-8c48-ccebc622089d"
+    },
+    "scratchBeforeUpgrade": "empty (filesystem inventory checked)",
+    "readiness": "UP",
+    "worker": "restarted; scanning bypass preserved for synthetic demo"
+  },
+  "streaming-durable": {
+    "migration": "8",
+    "legacyMaintenance": {
+      "purged": 0,
+      "volume": "8360c0b5-7baf-4c1c-baaa-b3899d202e40"
+    },
+    "scratchBeforeUpgrade": "empty (filesystem inventory checked)",
+    "readiness": "UP",
+    "worker": "restarted; scanning bypass preserved for synthetic demo"
+  }
+}

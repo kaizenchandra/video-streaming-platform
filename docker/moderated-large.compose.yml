@@ -1,0 +1,8 @@
+# Apply after docker/moderated.compose.yml. This is explicit opt-in to limited windowed scanning.
+services:
+  api:
+    environment:
+      MEDIA_SCAN_MODE: clamav-windowed-mp4
+  worker:
+    environment:
+      MEDIA_SCAN_MODE: clamav-windowed-mp4

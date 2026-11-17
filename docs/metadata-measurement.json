@@ -1,0 +1,12 @@
+{
+  "requests": 200,
+  "concurrency": 8,
+  "elapsed_seconds": 0.3036685419938294,
+  "achieved_rps": 658.6128371639629,
+  "latency_ms": {
+    "p50": 6.4349169988418,
+    "p95": 50.15650000132155,
+    "p99": 67.35599999956321
+  },
+  "note": "Local warm catalog; tiny dataset, no media bytes or production inference"
+}

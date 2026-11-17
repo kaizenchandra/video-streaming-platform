@@ -1,0 +1,66 @@
+[
+  {
+    "name": "com.example.streaming.ApiIT",
+    "tests": "11",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "2.217"
+  },
+  {
+    "name": "com.example.streaming.DatabaseIT",
+    "tests": "2",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "1.527"
+  },
+  {
+    "name": "com.example.streaming.MediaTest",
+    "tests": "7",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "0.1"
+  },
+  {
+    "name": "com.example.streaming.MigrationIT",
+    "tests": "1",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "1.66"
+  },
+  {
+    "name": "com.example.streaming.ProtectionTest",
+    "tests": "9",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "0.171"
+  },
+  {
+    "name": "com.example.streaming.RecoveryIT",
+    "tests": "17",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "7.773"
+  },
+  {
+    "name": "com.example.streaming.WorkerSecurityIT",
+    "tests": "2",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "4.481"
+  },
+  {
+    "name": "com.example.streaming.security.AuthenticationTest",
+    "tests": "2",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "time": "0.079"
+  }
+]

@@ -1,0 +1,14 @@
+# Optional live scanner for the isolated chaos workload; start scanner-qualification.compose.yml first.
+services:
+  api:
+    environment:
+      MEDIA_SCAN_MODE: clamav
+  worker:
+    environment:
+      MEDIA_SCAN_MODE: clamav
+      CLAMAV_HOST: clamav
+    networks: [ default, scanner ]
+networks:
+  scanner:
+    external: true
+    name: streaming-scanner-qualification_default

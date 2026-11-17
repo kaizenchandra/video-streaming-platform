@@ -1,0 +1,86 @@
+{
+  "java": "21.0.13",
+  "springBoot": "3.5.16",
+  "date": "2026-11-14",
+  "command": "mvn -o -Daether.syncContext.named.factory=noop -Dtest=MediaTest,ProtectionTest,AuthenticationTest,ScannerPolicyTest,DatabaseIT,ApiIT,RecoveryIT,WorkerSecurityIT,MigrationIT -Dtest.excluded=none package",
+  "totals": {
+    "tests": 70,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "name": "com.example.streaming.ApiIT",
+      "tests": "12",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "2.357"
+    },
+    {
+      "name": "com.example.streaming.DatabaseIT",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "1.582"
+    },
+    {
+      "name": "com.example.streaming.MediaTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.095"
+    },
+    {
+      "name": "com.example.streaming.MigrationIT",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "1.697"
+    },
+    {
+      "name": "com.example.streaming.ProtectionTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.182"
+    },
+    {
+      "name": "com.example.streaming.RecoveryIT",
+      "tests": "28",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "8.398"
+    },
+    {
+      "name": "com.example.streaming.ScannerPolicyTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.128"
+    },
+    {
+      "name": "com.example.streaming.WorkerSecurityIT",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "4.543"
+    },
+    {
+      "name": "com.example.streaming.security.AuthenticationTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.077"
+    }
+  ]
+}

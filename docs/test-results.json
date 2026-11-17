@@ -1,0 +1,26 @@
+[
+  {
+    "name": "com.example.streaming.ApiIT",
+    "tests": "6",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "3.256"
+  },
+  {
+    "name": "com.example.streaming.DatabaseIT",
+    "tests": "2",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "2.688"
+  },
+  {
+    "name": "com.example.streaming.MediaTest",
+    "tests": "7",
+    "failures": "0",
+    "errors": "0",
+    "skipped": "0",
+    "time": "0.097"
+  }
+]

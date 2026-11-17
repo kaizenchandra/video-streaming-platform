@@ -1,0 +1,143 @@
+{
+  "project": "stream-large-b678155d",
+  "frames": 6,
+  "scope": "small CI variant; no10GB claim",
+  "checks": {
+    "injections_restored_sha256": "PASS",
+    "large_reservation_and_idempotency": "PASS",
+    "concurrent_completion_and_quota": "PASS",
+    "full_byte_coverage_matching_hash_and_no_autoapproval": "PASS",
+    "manual_review_and_owner_role_enforcement": "PASS",
+    "scratch_receipt": "PASS",
+    "deletion_revocation": "PASS"
+  },
+  "source": {
+    "bytes": 132711201,
+    "metadata": {
+      "codec_name": "v210",
+      "width": 3840,
+      "height": 2160,
+      "avg_frame_rate": "24/1",
+      "duration": "0.250000",
+      "nb_frames": "6"
+    },
+    "padding": "none; real uncompressed video samples",
+    "sha256": "bc05c2572f12307243ae0a2964c22e349670ab4c315e4f957340dfaaec1e262b"
+  },
+  "liveDetectionQualification": {
+    "bytes": 132711201,
+    "canarySignature": "Streamworks.Coverage.Canary (qualification-only any-offset NDB rule; not native EICAR)",
+    "startedAt": "2026-11-14T19:15:32.384964354Z",
+    "engine": {
+      "version": "ClamAV 1.4.6",
+      "database": 28183,
+      "builtAt": 1794637457.0
+    },
+    "detections": {
+      "window_boundary": {
+        "result": "INFECTED",
+        "offset": 67108829,
+        "coverage": {
+          "policy": "clamav-windowed-mp4-v1",
+          "sourceBytes": 132711201,
+          "coveredBytes": 67108864,
+          "transmittedBytes": 132777502,
+          "windows": 1,
+          "windowBytes": 67108864,
+          "overlapBytes": 65536,
+          "sha256": null,
+          "complete": false
+        }
+      },
+      "media_tail": {
+        "result": "INFECTED",
+        "offset": 132710350,
+        "coverage": {
+          "policy": "clamav-windowed-mp4-v1",
+          "sourceBytes": 132711201,
+          "coveredBytes": 67108864,
+          "transmittedBytes": 132777502,
+          "windows": 1,
+          "windowBytes": 67108864,
+          "overlapBytes": 65536,
+          "sha256": null,
+          "complete": false
+        }
+      }
+    },
+    "elapsedSeconds": 4.866437844,
+    "result": "PASS"
+  },
+  "coverageCanaryRuleSha256": "6bbf18bc479bcece0216381390d41759c7152b5b0ad1d12025eac0a0a7add0cb",
+  "upload": {
+    "parts": 16,
+    "seconds": 0.5472681669925805,
+    "sourceBytes": 132711201,
+    "clientChunkBytes": 8388608,
+    "resumedAtPart": 4,
+    "lostAckReplay": "same ETag"
+  },
+  "processingSeconds": 6.087003209002432,
+  "coverage": {
+    "policy": "clamav-windowed-mp4-v1",
+    "sha256": "bc05c2572f12307243ae0a2964c22e349670ab4c315e4f957340dfaaec1e262b",
+    "windows": 2,
+    "complete": true,
+    "sourceBytes": 132711201,
+    "windowBytes": 67108864,
+    "coveredBytes": 132711201,
+    "overlapBytes": 65536,
+    "transmittedBytes": 132777502
+  },
+  "playback": {
+    "variants": [
+      "240p/index.m3u8",
+      "360p/index.m3u8",
+      "480p/index.m3u8",
+      "720p/index.m3u8",
+      "1080p/index.m3u8"
+    ],
+    "segmentsFetched": 5,
+    "anonymousDenied": true,
+    "offlineDecodeOfFetchedMedia": {
+      "renditions": {
+        "240p/index.m3u8": {
+          "codec_name": "h264",
+          "width": 426,
+          "height": 240,
+          "nb_read_frames": "6"
+        },
+        "360p/index.m3u8": {
+          "codec_name": "h264",
+          "width": 640,
+          "height": 360,
+          "nb_read_frames": "6"
+        },
+        "480p/index.m3u8": {
+          "codec_name": "h264",
+          "width": 854,
+          "height": 480,
+          "nb_read_frames": "6"
+        },
+        "720p/index.m3u8": {
+          "codec_name": "h264",
+          "width": 1280,
+          "height": 720,
+          "nb_read_frames": "6"
+        },
+        "1080p/index.m3u8": {
+          "codec_name": "h264",
+          "width": 1920,
+          "height": 1080,
+          "nb_read_frames": "6"
+        }
+      },
+      "expectedFrames": 6,
+      "network": "disabled",
+      "result": "PASS"
+    }
+  },
+  "pythonPeakRssBytes": 41598976,
+  "elapsedSeconds": 26.113699500012444,
+  "result": "PASS"
+}

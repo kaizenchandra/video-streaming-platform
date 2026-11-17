@@ -1,0 +1,14 @@
+{
+  "valid_control": "two HLS renditions",
+  "corrupt_packet_metadata_probe": "VALID JSON; subsequent strict decoding must fail",
+  "truncated_mp4": "REJECTED: IOException",
+  "audio_without_video": "REJECTED: IllegalArgumentException",
+  "oversized_dimensions": "REJECTED: IllegalArgumentException",
+  "excessive_frame_rate": "REJECTED: IllegalArgumentException",
+  "excessive_stream_count": "REJECTED: IllegalArgumentException",
+  "corrupt_nal_length": "REJECTED: IOException",
+  "remote_hls_reference": "REJECTED: IOException",
+  "local_concat_reference": "REJECTED: IOException",
+  "network_canary_connections": 0,
+  "result": "PASS"
+}

@@ -1,0 +1,17 @@
+{
+  "qualifiedAt": "2026-11-14T15:16:23.976065574Z",
+  "engine": "ClamAV 1.4.6",
+  "database": 28183,
+  "databaseBuiltAt": "2026-11-14T06:24:17Z",
+  "synthetic_video": "CLEAN",
+  "eicar": "INFECTED",
+  "archived_eicar": "INFECTED",
+  "archive_expansion_limit": "LIMIT_EXCEEDED (application ZIP preflight)",
+  "client_byte_budget": "LIMIT_EXCEEDED",
+  "stale_database_policy": "REJECTED (clock simulated)",
+  "elapsedSeconds": 9.101443944,
+  "result": "PASS",
+  "downloadedDatabase": 28183,
+  "platform": "linux/amd64 (emulated on this ARM64 local host)",
+  "fixtureImage": "clamav/clamav:1.4.6@sha256:cbc30de94b6e9b33ac14136ff45306cee02a1f9ae522394a3cc5b9215d1affe9"
+}

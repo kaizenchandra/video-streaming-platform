@@ -1,0 +1,21 @@
+{
+  "8181": {
+    "health": "UP",
+    "scratchMetrics": [
+      "streaming_scratch_cleanup_errors 0.0",
+      "streaming_scratch_pending 0.0"
+    ]
+  },
+  "8182": {
+    "health": "UP",
+    "scratchMetrics": [
+      "streaming_scratch_cleanup_errors 0.0",
+      "streaming_scratch_pending 0.0"
+    ]
+  },
+  "deletedSyntheticVideo": {
+    "primaryErasure": "PENDING",
+    "scratchPending": 0
+  },
+  "normalAttemptScratchReceipt": "purged immediately after processing"
+}

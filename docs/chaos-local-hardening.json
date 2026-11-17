@@ -1,0 +1,17 @@
+{
+  "presigned_part_length_enforced": "PASS",
+  "worker_sigkill_and_expired_lease": "PASS (lease clock accelerated)",
+  "crash_scratch_retention": "PASS (retention clock accelerated)",
+  "storage_outage_no_false_completion": "PASS",
+  "database_restart_and_media_persistence": "PASS",
+  "minio_versioned_physical_erasure": "PASS (retention clock accelerated)",
+  "storage_provider": "source-built MinIO RELEASE.2025-09-07T16-13-09Z local fixture",
+  "paused_writer_lock_and_legal_hold": "PASS (cgroup freezer; lease/retention clocks accelerated)",
+  "encoder_timeout_kills_child": "PASS",
+  "tmpfs_disk_exhaustion": "PASS (1 MiB tmpfs, real ENOSPC)",
+  "worker_cgroup_oom_and_recovery": "PASS (96 MiB injected limit, lease clock accelerated)",
+  "live_eicar_quarantine": "PASS",
+  "scanner_outage_fails_closed": "PASS",
+  "live_scanner_recovery_and_audit": "PASS",
+  "elapsed_seconds": 111.079
+}

@@ -1,0 +1,23 @@
+# Isolated project override, Compose >=2.24.4 required for !override.
+services:
+  api:
+    image: ${CHAOS_API_IMAGE:-streaming-api}
+    ports: !override [ "127.0.0.1::8080" ]
+    environment:
+      S3_PUBLIC_ENDPOINT: ${CHAOS_S3_URL:-http://localhost:1}
+      ERASURE_ENABLED: "false"
+      SPRING_APPLICATION_JSON: '{"media":{"erasure":{"enabled":true,"interval-ms":1000}}}'
+  worker:
+    image: ${CHAOS_WORKER_IMAGE:-streaming-worker}
+    tmpfs: [ "/tiny:size=1m,uid=10001,gid=10001,mode=0700" ]
+    volumes: [ "./docker/chaos-tools:/chaos:ro" ]
+    environment:
+      S3_PUBLIC_ENDPOINT: ${CHAOS_S3_URL:-http://localhost:1}
+      ERASURE_ENABLED: "false"
+      SPRING_APPLICATION_JSON: ${CHAOS_WORKER_JSON:-}
+  storage:
+    ports: !override [ "127.0.0.1::4566" ]
+  postgres:
+    ports: !override [ "127.0.0.1::5432" ]
+  web:
+    ports: !override [ "127.0.0.1::80" ]

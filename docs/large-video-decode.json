@@ -1,0 +1,37 @@
+{
+  "renditions": {
+    "240p/index.m3u8": {
+      "codec_name": "h264",
+      "width": 426,
+      "height": 240,
+      "nb_read_frames": "486"
+    },
+    "360p/index.m3u8": {
+      "codec_name": "h264",
+      "width": 640,
+      "height": 360,
+      "nb_read_frames": "486"
+    },
+    "480p/index.m3u8": {
+      "codec_name": "h264",
+      "width": 854,
+      "height": 480,
+      "nb_read_frames": "486"
+    },
+    "720p/index.m3u8": {
+      "codec_name": "h264",
+      "width": 1280,
+      "height": 720,
+      "nb_read_frames": "486"
+    },
+    "1080p/index.m3u8": {
+      "codec_name": "h264",
+      "width": 1920,
+      "height": 1080,
+      "nb_read_frames": "486"
+    }
+  },
+  "expectedFrames": 486,
+  "network": "disabled",
+  "result": "PASS"
+}

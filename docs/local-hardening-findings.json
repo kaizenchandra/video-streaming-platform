@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-14",
+  "archive_before_fix": {
+    "observed": "ClamAV CLEAN for ZIP with a101MiB expanded entry despite configured100MiB file limit and AlertExceedsMax",
+    "expected": "LIMIT_EXCEEDED",
+    "status": "Application ZIP guard added; compressed-entry, nested trailing-byte and live expansion regressions passed",
+    "underlyingEngineCause": "not established; no universal archive safety claim"
+  },
+  "fixture_corrections": [
+    {
+      "issue": "Object store restart reassigned an ephemeral host port; subsequent new upload connection refused",
+      "correction": "Recompute endpoint and recreate only the disposable API/worker/web fixture"
+    },
+    {
+      "issue": "SIGSTOP sent to PID1 inside its namespace did not reliably freeze the JVM",
+      "correction": "Use Docker cgroup pause, assert Paused and start a separate takeover worker"
+    },
+    {
+      "issue": "VERSION timed out while nonconcurrent signature reload blocked requests",
+      "correction": "Qualification waits at most60 seconds for matching daemon/downloaded versions; runtime remains fail-closed"
+    }
+  ],
+  "posix_lock_safeguard": "Avoid a second JVM-local channel to a held inode; separate-JVM lock probe passed"
+}

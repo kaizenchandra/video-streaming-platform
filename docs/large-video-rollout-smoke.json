@@ -1,0 +1,9 @@
+{
+  "video": "c6cf0c6f-2f07-40f0-9dc2-0a893669b525",
+  "renditions": [
+    "240p/index.m3u8",
+    "360p/index.m3u8"
+  ],
+  "source_bytes": 781521,
+  "result": "PASS"
+}

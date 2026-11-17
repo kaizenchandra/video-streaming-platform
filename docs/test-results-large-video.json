@@ -1,0 +1,100 @@
+{
+  "date": "2026-11-15",
+  "java": "21.0.13",
+  "totals": {
+    "tests": 84,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "name": "com.example.streaming.ApiIT",
+      "tests": "13",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "3.641"
+    },
+    {
+      "name": "com.example.streaming.DatabaseIT",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "3.031"
+    },
+    {
+      "name": "com.example.streaming.LargeScannerTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "1.033"
+    },
+    {
+      "name": "com.example.streaming.MediaTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.128"
+    },
+    {
+      "name": "com.example.streaming.MigrationIT",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "2.674"
+    },
+    {
+      "name": "com.example.streaming.ProtectionTest",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.233"
+    },
+    {
+      "name": "com.example.streaming.RecoveryIT",
+      "tests": "28",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "12.574"
+    },
+    {
+      "name": "com.example.streaming.ScannerPolicyTest",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.158"
+    },
+    {
+      "name": "com.example.streaming.WindowPolicyTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.734"
+    },
+    {
+      "name": "com.example.streaming.WorkerSecurityIT",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "7.442"
+    },
+    {
+      "name": "com.example.streaming.security.AuthenticationTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.116"
+    }
+  ]
+}
